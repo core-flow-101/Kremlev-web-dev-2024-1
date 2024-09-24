@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Signika Negative", sans-serif;
+
+}
+
+.container {
+    margin-left: 50px;
+}
+
+h1 {
+
+    margin-bottom: 40px;
+}
+
+.about_us>h2 {
+    margin-top: 0;
+}
+
+nav {
+    margin-bottom: 40px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list>li {
+    margin-right: 20px;
+}
+
+.nav-list>li>a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+    color: orange;
+}
+
+.advantages-list {
+    padding-left: 0;
+}
+
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th,
+td {
+    border: 1.5px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+footer {
+    background-color: black;
+    padding: 30px;
+}
+
+footer>a {
+    color: #ddd;
+}
