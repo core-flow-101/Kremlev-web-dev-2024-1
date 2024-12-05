@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Construct</title>
+    <link rel="stylesheet" href="styles/lunch_style.css">
+    <link rel="stylesheet" href="styles/form_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Food Construct</h1>
+            <nav class="nav-list">
+                <a href="index.html">О нас</a>
+                <a href="lunch.html" class="active">Собрать ланч</a>
+                <a href="#">Заказы</a>
+                <a href="#">Контакты</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="soup">
+                <h2>Выберите суп</h2>
+                <div class="items">
+                </div>
+            </section>
+
+            <section class="main-course">
+                <h2>Выберите главное блюдо</h2>
+                <div class="items">
+                </div>
+            </section>
+
+            <section class="beverage">
+                <h2>Выберите напиток</h2>
+                <div class="items">
+                </div>
+            </section>
+
+            <div class="order-form">
+                <form action="https://httpbin.org/post" method="post">
+                    <h2>Сделать заказ</h2>
+
+                    <div class="order-form-content">
+                        <div class="user-order">
+                            <h3>Ваш заказ</h3>
+
+                            <input class="sel selected-soup" name="selected-soup" value="" hidden></input>
+                            <input class="sel selected-main-course" name="selected-main-course" value="" hidden></input>
+                            <input class="sel selected-beverage" name="selected-beverage" value="" hidden></input>
+                            <input class="sel order-price-input" name="price" value="" hidden></input>
+
+                            <p class="nothing">Ничего не выбрано</p>
+
+                            <div class="chosen hid" category="soup">
+                                <label for="soups-input" class="dish-label">Суп</label>
+                                <p id="soups-input">Суп не выбран</p>
+                            </div>
+
+                            <div class="chosen hid" category="main-course">
+                                <label for="main-course-input" class="dish-label">Главное блюдо</label>
+                                <p id="main-course-input">Главное блюдо не выбрано</p>
+                            </div>
+
+                            <div class="chosen hid" category="beverage">
+                                <label for="beverage-input" class="dish-label">Напиток</label>
+                                <p id="beverage-input">Напиток не выбран</p>
+                            </div>
+
+                            <p class="hid dish-label">Сумма заказа</p>
+                            <p class="order-price hid">0</p>
+
+                            <label for="comment">Комментарий к заказу</label>
+                            <textarea id="comment" name="comment-message" rows="4" cols="50"></textarea>
+                        </div>
+
+                        <div class="user-data">
+                            <h3>Ваши данные</h3>
+
+                            <label for="name-input">Имя</label>
+                            <input class="text-input" type="text" id="name-input" name="name-input"
+                                required="required" />
+
+                            <label for="email-input">Email</label>
+                            <input class="text-input" type="text" id="email-input" name="email-input"
+                                required="required" />
+
+                            <div class="subscribe-checkbox">
+                                <input type="checkbox" id="subscribe" name="subscribe" value="yes" checked />
+                                <label for="subscribe">Получать информацию о скидках и акциях</label>
+                            </div>
+
+                            <label for="phone-input">Номер телефона</label>
+                            <input class="text-input" type="text" id="phone-input" name="phone-input"
+                                required="required" />
+
+                            <label for="address-input">Адрес доставки</label>
+                            <input class="text-input" type="text" id="address-input" name="address-input"
+                                required="required" />
+
+                            <fieldset class="delivery-time">
+                                <legend>Время доставки:</legend>
+                                <div class="delivery-options">
+                                    <label>
+                                        <input type="radio" name="radio-option" value="as-fast-as-possible">
+                                        Как можно быстрее
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="radio-option" value="specified-time">
+                                        В указанное время
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <label for="time">Укажите время доставки:</label>
+                            <input class="text-input" type="time" id="time" min="07:00" max="23:00" step="300"
+                                name="time-input" />
+
+                            <div class="form-buttons">
+                                <button type="submit">Отправить</button>
+                                <button type="reset" onclick="clearSelectedDishes()">Очистить</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+
+    </div>
+
+    <footer>
+        <a>Позвонить нам:+7-000-000-00-00</a>
+    </footer>
+
+    <script src="scripts/dish.js"></script>
+    <script src="scripts/createSortDishes.js"></script>
+    <script src="scripts/loadCards.js"></script>
+    <script src="scripts/order.js"></script>
+</body>
+
+</html>
