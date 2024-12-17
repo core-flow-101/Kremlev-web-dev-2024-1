@@ -3,14 +3,19 @@ let currentDishPriceSum = 0;
 const selectedDishes = {
     soup: null,
     mainCourse: null,
-    beverage: null
+    beverage: null,
+    saladsStarters: null,
+    desserts: null
 };
 
 const dishMapper = {
     'soup': 'soup',
     'main-course': 'mainCourse',
-    'beverage': 'beverage'
+    'beverage': 'beverage',
+    'salads-starters': 'saladsStarters',
+    'desserts': 'desserts'
 };
+
 
 
 function addDish(event) {
@@ -46,21 +51,23 @@ function updateSelectedDishes() {
     toggleDishListVisibility(true);
 
     currentDishPriceSum = 0;
-    Object.values(selectedDishes).forEach(value => {
-        if (!value) return;
+    Object.entries(selectedDishes).forEach(([categoryKey, dishKeyword]) => {
+        if (!dishKeyword) return;
 
-        const dish = dishes.find(d => d.keyword === value);
+        const dish = dishes.find(d => d.keyword === dishKeyword);
         if (!dish) return;
 
         const categoryElement = document.querySelector(`.chosen[category='${dish.category}']`);
-        categoryElement.querySelector('p').innerText = `${dish.name} - ${dish.price}`;
-        currentDishPriceSum += dish.price;
+        if (categoryElement) {
+            categoryElement.querySelector('p').innerText = `${dish.name} - ${dish.price}`;
+            currentDishPriceSum += dish.price;
+        }
     });
-
 
     document.querySelector('.order-price').innerText = currentDishPriceSum;
     document.querySelector('.order-price-input').setAttribute('value', currentDishPriceSum);
 }
+
 
 
 function toggleDishListVisibility(show) {
@@ -74,6 +81,7 @@ function toggleDishListVisibility(show) {
 function areDishesEmpty() {
     return Object.values(selectedDishes).every(value => value === null);
 }
+
 
 
 function clearSelectedDishes() {
